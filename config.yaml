@@ -8,7 +8,7 @@ params:
         - post
     featuredImageField: image
     rssFullContent: true
-    favicon:
+    favicon: /favicon.ico
 
     footer:
         since:
@@ -21,11 +21,11 @@ params:
     sidebar:
         compact: false
         emoji:
-        subtitle:
+        subtitle: 啥也不是，净唠比嗑
         avatar:
             enabled: true
-            local: true
-            src: img/avatar.png
+            local: false
+            src: /img/avatar.jpg
 
     article:
         math: false
@@ -51,12 +51,6 @@ params:
             issueTerm: pathname
             label:
 
-        beaudar:
-            repo:
-            issueTerm: pathname
-            label:
-            theme:        
-
         remark42:
             host:
             site:
@@ -70,7 +64,7 @@ params:
             clientSecret:
             autoCreateIssue: false
 
-        # Waline client configuration see: https://waline.js.org/en/reference/client/props.html
+        # Waline client configuration see: https://waline.js.org/en/reference/client.html
         waline:
             serverURL:
             lang:
@@ -81,9 +75,9 @@ params:
             requiredMeta:
                 - nick
                 - mail
+            placeholder:
             locale:
                 admin: Admin
-                placeholder:
 
         twikoo:
             envId:
@@ -117,8 +111,34 @@ params:
             id:
 
     widgets:
-        homepage: []
-        page: []
+        homepage: [
+            {
+                type: search
+            },
+            {
+                type: archives
+            },
+            {
+                type: categories
+            },
+            {
+                type: tag-cloud
+            }
+        ]
+        page: [
+            {
+                type: search
+            },
+            {
+                type: archives
+            },
+            {
+                type: categories
+            },
+            {
+                type: tag-cloud
+            }
+        ]
 
     opengraph:
         twitter:
@@ -146,3 +166,30 @@ params:
             enabled: true
         content:
             enabled: true
+menu:
+    main:
+        - identifier: home
+          name: 首页
+          url: /
+          weight: -100
+          pre: home
+
+
+related:
+    includeNewer: true
+    threshold: 60
+    toLower: false
+    indices:
+        - name: tags
+          weight: 100
+
+        - name: categories
+          weight: 200
+
+markup:
+    tableOfContents:
+        endLevel: 4
+        ordered: true
+        startLevel: 2
+    highlight:
+        noClasses: false
